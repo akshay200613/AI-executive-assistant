@@ -1,0 +1,116 @@
+user_instruction,task_category,expected_action,tool_mapping,final_response
+Draft a follow-up email to a client who hasn't responded in a week,email_generation,generate_followup_email,email_tool,Drafted a polite follow-up email referencing the previous conversation and requesting an update.
+Write an email to my manager explaining the report will be delayed by two days,email_generation,generate_delay_notice_email,email_tool,Drafted an email to the manager explaining the delay reason and new submission date.
+Compose a welcome email for a new employee joining next Monday,email_generation,generate_welcome_email,email_tool,Drafted a welcome email including onboarding details and first-day instructions.
+Send a thank you email to the vendor after the meeting,email_generation,generate_thankyou_email,email_tool,Drafted a thank-you email summarizing meeting outcomes and next steps.
+Draft an email rejecting a vendor proposal politely,email_generation,generate_rejection_email,email_tool,Drafted a polite rejection email thanking the vendor and declining the proposal.
+Write a reminder email to the team about tomorrow's stand-up meeting,email_generation,generate_reminder_email,email_tool,Drafted a short reminder email with meeting time and agenda link.
+Draft an email requesting a deadline extension from the client,email_generation,generate_extension_request_email,email_tool,Drafted an email requesting a one-week extension with justification.
+Compose an email announcing the product launch to all stakeholders,email_generation,generate_announcement_email,email_tool,Drafted a launch announcement email highlighting key features and launch date.
+Write a congratulatory email to an employee who got promoted,email_generation,generate_congrats_email,email_tool,Drafted a warm congratulatory email acknowledging the promotion.
+Draft an email apologizing for a missed deadline to the client,email_generation,generate_apology_email,email_tool,Drafted an apology email with reason for delay and revised timeline.
+Write an email inviting the team to the quarterly review meeting,email_generation,generate_invite_email,email_tool,"Drafted a meeting invite email with date, agenda, and location."
+Draft a cold outreach email to a potential investor,email_generation,generate_outreach_email,email_tool,Drafted a concise investor outreach email highlighting traction and ask.
+Compose an email requesting feedback on the new website design,email_generation,generate_feedback_request_email,email_tool,Drafted an email requesting structured feedback with a deadline.
+Write a resignation acknowledgment email to an employee,email_generation,generate_resignation_ack_email,email_tool,Drafted an acknowledgment email confirming last working day and offboarding steps.
+Draft an email to HR asking about the leave policy,email_generation,generate_hr_query_email,email_tool,Drafted an email addressed to HR asking for clarification on leave policy.
+Summarize this 3-page meeting transcript into key points,text_summarization,summarize_text,summarizer_tool,"Generated a 5-bullet summary covering decisions, owners, and deadlines."
+Give me a short summary of this client contract,text_summarization,summarize_text,summarizer_tool,"Produced a concise summary of contract terms, obligations, and renewal date."
+Summarize the quarterly sales report in 100 words,text_summarization,summarize_text,summarizer_tool,Generated a 100-word summary highlighting revenue trends and top performers.
+Condense this long customer complaint email into 2 lines,text_summarization,summarize_text,summarizer_tool,Produced a 2-line summary capturing the core complaint and requested resolution.
+Summarize the key takeaways from this project status document,text_summarization,summarize_text,summarizer_tool,"Generated bullet-point takeaways covering progress, blockers, and next steps."
+Give a brief summary of this research article for the team,text_summarization,summarize_text,summarizer_tool,Produced a plain-language summary of the article's findings and relevance.
+Summarize this long Slack thread about the outage,text_summarization,summarize_text,summarizer_tool,Generated a timeline-style summary of the outage cause and resolution.
+Shorten this press release to 3 sentences,text_summarization,summarize_text,summarizer_tool,Produced a 3-sentence version preserving the core announcement.
+Summarize this competitor analysis document,text_summarization,summarize_text,summarizer_tool,"Generated a summary comparing competitors on pricing, features, and market share."
+Give me the highlights of this all-hands meeting recording transcript,text_summarization,summarize_text,summarizer_tool,Produced a highlights list covering announcements and Q&A themes.
+Summarize this legal clause in plain English,text_summarization,summarize_text,summarizer_tool,Generated a plain-English explanation of the clause's obligations.
+Condense this 10-page proposal into an executive summary,text_summarization,summarize_text,summarizer_tool,"Produced an executive summary covering scope, cost, and timeline."
+Summarize the customer feedback survey responses,text_summarization,summarize_text,summarizer_tool,Generated a summary grouping feedback into themes with frequency counts.
+Give a short summary of today's news articles about our industry,text_summarization,summarize_text,summarizer_tool,Produced a digest-style summary of the top relevant articles.
+Summarize this onboarding document for new hires,text_summarization,summarize_text,summarizer_tool,Generated a condensed checklist-style summary of onboarding steps.
+"How does this customer review sound, positive or negative?",sentiment_analysis,analyze_sentiment,sentiment_tool,Classified the review as Negative (confidence 0.87) due to complaints about delivery delay.
+Check the tone of this client email before I reply,sentiment_analysis,analyze_sentiment,sentiment_tool,Classified the email tone as Neutral-to-Frustrated; recommend an empathetic reply.
+Analyze the sentiment of these 20 product reviews,sentiment_analysis,analyze_sentiment_batch,sentiment_tool,"Classified reviews as 60% Positive, 25% Neutral, 15% Negative with example excerpts."
+Is this support ticket message angry or calm?,sentiment_analysis,analyze_sentiment,sentiment_tool,Classified the ticket as Negative/High-urgency based on language intensity.
+Check how positive our latest social media mentions are,sentiment_analysis,analyze_sentiment_batch,sentiment_tool,"Classified mentions as 72% Positive overall, with brand tone trending favorable."
+What's the sentiment of this investor's reply email?,sentiment_analysis,analyze_sentiment,sentiment_tool,"Classified the reply as Positive, indicating continued interest."
+Analyze the mood of this team feedback form,sentiment_analysis,analyze_sentiment,sentiment_tool,Classified overall sentiment as Neutral with some Negative comments on workload.
+Is this cancellation email hostile or just factual?,sentiment_analysis,analyze_sentiment,sentiment_tool,"Classified the email as Neutral/Factual, no hostile language detected."
+Check the sentiment trend of customer chats this week,sentiment_analysis,analyze_sentiment_batch,sentiment_tool,Classified weekly sentiment trend as improving from 50% to 65% Positive.
+How does the client feel about the proposal based on their reply?,sentiment_analysis,analyze_sentiment,sentiment_tool,Classified the reply as cautiously Positive with reservations about pricing.
+Check whether this Glassdoor-style employee comment is positive or negative,sentiment_analysis,analyze_sentiment,sentiment_tool,"Classified the comment as Negative, citing concerns about work-life balance."
+Analyze the sentiment of our latest NPS survey comments,sentiment_analysis,analyze_sentiment_batch,sentiment_tool,"Classified NPS comments as 55% Positive, 30% Neutral, 15% Negative."
+Is the tone of this partnership proposal reply enthusiastic?,sentiment_analysis,analyze_sentiment,sentiment_tool,Classified the reply as Positive/Enthusiastic based on affirming language.
+Check the sentiment of this candidate's interview feedback form,sentiment_analysis,analyze_sentiment,sentiment_tool,Classified overall feedback sentiment as Positive with minor reservations noted.
+Analyze how upset this refund request email sounds,sentiment_analysis,analyze_sentiment,sentiment_tool,"Classified the email as Negative/High-urgency, recommending priority handling."
+Remind me to submit the report tomorrow at 5 PM,reminder_creation,create_reminder,reminder_tool,"Reminder set: 'Submit report' scheduled for tomorrow, 5:00 PM."
+Set a reminder for the client call on Friday at 10 AM,reminder_creation,create_reminder,reminder_tool,"Reminder set: 'Client call' scheduled for Friday, 10:00 AM."
+Remind the team to submit timesheets every Friday,reminder_creation,create_recurring_reminder,reminder_tool,Recurring reminder set: 'Submit timesheets' every Friday.
+Set a reminder to renew the domain subscription next month,reminder_creation,create_reminder,reminder_tool,Reminder set: 'Renew domain subscription' scheduled for next month.
+Remind me to follow up with the vendor in 3 days,reminder_creation,create_reminder,reminder_tool,Reminder set: 'Follow up with vendor' scheduled 3 days from today.
+Set a daily reminder to check the support inbox at 9 AM,reminder_creation,create_recurring_reminder,reminder_tool,Recurring reminder set: 'Check support inbox' daily at 9:00 AM.
+Remind me about the investor meeting next Tuesday,reminder_creation,create_reminder,reminder_tool,Reminder set: 'Investor meeting' scheduled for next Tuesday.
+Set a reminder to review the budget before month end,reminder_creation,create_reminder,reminder_tool,Reminder set: 'Review budget' scheduled for the last day of the month.
+Remind me to send the invoice once the project is marked complete,reminder_creation,create_conditional_reminder,reminder_tool,Conditional reminder set: 'Send invoice' triggered on project completion status.
+Set a reminder for the team's one-on-one meetings every Monday,reminder_creation,create_recurring_reminder,reminder_tool,Recurring reminder set: 'One-on-one meetings' every Monday.
+Remind me to pay the office rent on the 1st of every month,reminder_creation,create_recurring_reminder,reminder_tool,Recurring reminder set: 'Pay office rent' on the 1st of every month.
+Set a reminder to back up the database every night at midnight,reminder_creation,create_recurring_reminder,reminder_tool,Recurring reminder set: 'Backup database' daily at midnight.
+Remind me to check in with the new hire after their first week,reminder_creation,create_reminder,reminder_tool,Reminder set: 'Check in with new hire' scheduled one week from their start date.
+Set a reminder to review pull requests before end of day,reminder_creation,create_reminder,reminder_tool,Reminder set: 'Review pull requests' scheduled for end of day.
+Remind me to renew the office insurance before it expires,reminder_creation,create_reminder,reminder_tool,Reminder set: 'Renew office insurance' scheduled ahead of the expiry date.
+What is our company's leave policy?,faq_answering,retrieve_faq_answer,faq_tool,"Retrieved answer: employees get 18 paid leave days annually, per HR policy doc."
+How do I raise an IT support ticket?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: submit a ticket via the internal helpdesk portal under 'IT Requests'.
+What is the reimbursement process for travel expenses?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: submit receipts via the finance portal within 15 days of travel.
+Who do I contact for payroll issues?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: payroll queries go to the HR/payroll team via the internal portal.
+What is the company's remote work policy?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: employees may work remotely up to 3 days per week with manager approval.
+How many sick leaves am I entitled to?,faq_answering,retrieve_faq_answer,faq_tool,"Retrieved answer: 10 paid sick leave days per year, per company policy."
+What is the notice period for resignation?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: standard notice period is 30 days as per the employee handbook.
+What benefits does the company offer?,faq_answering,retrieve_faq_answer,faq_tool,"Retrieved answer: health insurance, annual bonus, and learning stipend, per benefits doc."
+How do I book a meeting room?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: meeting rooms are booked through the shared office calendar tool.
+What is the process to request new equipment?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: submit an equipment request form to the admin team.
+What is our policy on overtime pay?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: overtime is compensated at 1.5x rate for hours beyond 40/week.
+How does the referral bonus program work?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: employees get a bonus after the referred hire completes 90 days.
+What is the process for expense report approval?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: expense reports need manager approval before finance processes them.
+Who approves work-from-home requests?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: direct managers approve WFH requests via the HR portal.
+What is the company's policy on data retention?,faq_answering,retrieve_faq_answer,faq_tool,Retrieved answer: customer data is retained for 24 months per the data policy doc.
+Find the clause about termination in this contract,document_search,search_document,document_search_tool,Located Clause 8.2 'Termination' specifying 30-day written notice requirement.
+Search the policy document for information about maternity leave,document_search,search_document,document_search_tool,Located Section 5.3 detailing 26-week paid maternity leave entitlement.
+Find where the NDA mentions confidentiality duration,document_search,search_document,document_search_tool,Located Clause 4.1 stating confidentiality obligations last 5 years post-termination.
+Search the vendor agreement for the payment terms,document_search,search_document,document_search_tool,Located Section 3 specifying net-30 payment terms.
+Find the section about data privacy in our compliance doc,document_search,search_document,document_search_tool,Located Section 7 covering GDPR-aligned data handling requirements.
+Search the onboarding manual for laptop setup instructions,document_search,search_document,document_search_tool,Located page 4 with step-by-step laptop and VPN setup instructions.
+Find the pricing table in the product proposal,document_search,search_document,document_search_tool,Located the pricing table on page 6 listing tiered plan costs.
+Search the investor deck for the revenue projection slide,document_search,search_document,document_search_tool,Located slide 12 showing 3-year revenue projections.
+Find the refund policy clause in the terms of service,document_search,search_document,document_search_tool,Located Clause 9 stating refunds are processed within 14 business days.
+Search the employee handbook for the dress code policy,document_search,search_document,document_search_tool,Located Section 2.4 describing the business-casual dress code.
+Find the SLA response time commitment in the support contract,document_search,search_document,document_search_tool,Located Clause 6 specifying a 4-hour SLA response time for critical issues.
+Search the partnership agreement for the exclusivity clause,document_search,search_document,document_search_tool,Located Clause 11 outlining a 12-month exclusivity period.
+Find the equity vesting schedule in the offer letter,document_search,search_document,document_search_tool,Located the vesting section specifying a 4-year schedule with a 1-year cliff.
+Search the compliance report for the audit findings section,document_search,search_document,document_search_tool,Located the audit findings section on page 9 listing 3 minor issues.
+Find the cancellation policy in the subscription agreement,document_search,search_document,document_search_tool,Located Clause 5 stating cancellations require 30 days' written notice.
+"I have these 5 tasks, which should I do first: fix bug, write report, reply to client, prep slides, review PR",task_prioritization,prioritize_tasks,prioritization_tool,"Prioritized order: 1) Reply to client, 2) Fix bug, 3) Review PR, 4) Prep slides, 5) Write report."
+Help me prioritize my tasks for today given 3 have deadlines,task_prioritization,prioritize_tasks,prioritization_tool,"Prioritized deadline-bound tasks first, followed by remaining tasks by estimated effort."
+Which of these client requests is most urgent?,task_prioritization,prioritize_tasks,prioritization_tool,"Ranked requests by stated urgency and client tier, with the top request flagged urgent."
+Rank my to-do list by importance and deadline,task_prioritization,prioritize_tasks,prioritization_tool,Produced a ranked list combining urgency and importance scores for each task.
+Help me decide what to tackle first this sprint,task_prioritization,prioritize_tasks,prioritization_tool,"Prioritized sprint items by blocker status, then by story points."
+Sort these bug tickets by severity and priority,task_prioritization,prioritize_tasks,prioritization_tool,Sorted tickets with critical-severity bugs ranked above minor issues.
+"What should the team focus on first: onboarding, marketing, or bug fixes?",task_prioritization,prioritize_tasks,prioritization_tool,"Recommended bug fixes first due to active customer impact, then onboarding, then marketing."
+Prioritize these features for the next release,task_prioritization,prioritize_tasks,prioritization_tool,Ranked features by customer demand and implementation effort.
+Help me order these meetings by importance today,task_prioritization,prioritize_tasks,prioritization_tool,Ordered meetings with client-facing ones prioritized over internal syncs.
+Which pending approvals should I clear first?,task_prioritization,prioritize_tasks,prioritization_tool,Ranked approvals by how many downstream tasks are blocked on each.
+Help me prioritize hiring vs fundraising this quarter,task_prioritization,prioritize_tasks,prioritization_tool,"Recommended fundraising first given runway constraints, then hiring."
+Order these customer support tickets by SLA breach risk,task_prioritization,prioritize_tasks,prioritization_tool,Ranked tickets with those nearest SLA breach placed at the top.
+Prioritize these vendor contracts for renewal review,task_prioritization,prioritize_tasks,prioritization_tool,Ranked contracts by nearest expiry date and business criticality.
+What should I address first: a security bug or a UI bug?,task_prioritization,prioritize_tasks,prioritization_tool,Prioritized the security bug first due to higher risk severity.
+Help me sequence these onboarding tasks for the new hire,task_prioritization,prioritize_tasks,prioritization_tool,"Sequenced tasks starting with account setup, followed by access and training."
+Summarize this client email and draft a polite reply,summarization+email_generation,summarize_then_generate_email,"summarizer_tool,email_tool",Summarized the client's email and drafted a polite reply addressing the key points.
+Check the sentiment of this review and draft a response,sentiment_analysis+email_generation,analyze_then_generate_email,"sentiment_tool,email_tool",Classified the review as Negative and drafted an empathetic response email.
+Find the payment clause in this contract and summarize it,document_search+text_summarization,search_then_summarize,"document_search_tool,summarizer_tool",Located the payment clause and produced a 2-line plain-English summary.
+Summarize my pending tasks and tell me what to prioritize,text_summarization+task_prioritization,summarize_then_prioritize,"summarizer_tool,prioritization_tool",Summarized the pending task list and ranked them by urgency and deadline.
+Search the FAQ for the leave policy and remind me to apply next week,faq_answering+reminder_creation,faq_then_reminder,"faq_tool,reminder_tool",Retrieved the leave policy answer and set a reminder to apply next week.
+Thank you,email_generation,generate_thankyou_email,email_tool,Drafted a thank-you email.
+Thanks,email_generation,generate_thankyou_email,email_tool,Drafted a thank-you email.
+Hi,email_generation,generate_greeting_email,email_tool,Drafted a greeting email.
+Hello,email_generation,generate_greeting_email,email_tool,Drafted a greeting email.
+Hey there,email_generation,generate_greeting_email,email_tool,Drafted a greeting email.
