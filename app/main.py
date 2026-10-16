@@ -14,12 +14,21 @@ Endpoints:
 import time
 import traceback
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from app import memory, logger
 from app.planner import plan_and_execute
 
 app = FastAPI(title="AI Executive Assistant")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # --- Middleware for API Tracking ---
 @app.middleware("http")

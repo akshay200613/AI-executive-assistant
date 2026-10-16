@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Executive Assistant — Intelligent Agentic Workflow</title>
+  <meta name="description" content="An agentic AI executive assistant that understands intent, decomposes compound requests, chains tools, and executes business tasks with precision.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
+              <path d="M16 14v-1a4 4 0 0 0-8 0v1"/>
+              <path d="M12 18v4"/>
+              <path d="M8 22h8"/>
+              <circle cx="12" cy="11" r="1"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">Executive AI</span>
+            <span class="brand-subtitle">Autonomous Assistant</span>
+          </div>
+        </div>
+        <button class="icon-btn mobile-close" id="sidebar-close-btn" aria-label="Close sidebar">
+          ✕
+        </button>
+      </div>
+
+      <div class="sidebar-action">
+        <button class="new-chat-btn" id="new-chat-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>New Session</span>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">Session Info</div>
+        <div class="session-card" id="session-card" title="Click to copy Session ID">
+          <div class="session-id-text">
+            <span class="dot-online"></span>
+            <span id="session-id-display">Connecting...</span>
+          </div>
+          <span class="copy-badge" id="session-copy-badge">Copy</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section quick-prompts-section">
+        <div class="section-label">Suggested Workflows</div>
+        <div class="prompt-chips">
+          <button class="prompt-chip" data-prompt="Draft a professional response to Sarah confirming our strategy meeting this Thursday at 3 PM.">
+            <span class="chip-icon">✉️</span>
+            <span class="chip-text">Draft meeting email</span>
+          </button>
+          <button class="prompt-chip" data-prompt="Summarize this Q3 report: Revenue grew by 24% YoY driven by enterprise subscriptions, while customer churn decreased to 1.8%. However, operating expenses rose 15% due to hiring and GPU infrastructure costs.">
+            <span class="chip-icon">📝</span>
+            <span class="chip-text">Summarize report</span>
+          </button>
+          <button class="prompt-chip" data-prompt="Analyze the sentiment of this feedback: 'The product has amazing potential and great UI, but customer support was completely unresponsive when our webhook broke.'">
+            <span class="chip-icon">💡</span>
+            <span class="chip-text">Analyze sentiment</span>
+          </button>
+          <button class="prompt-chip" data-prompt="Summarize the client proposal and then draft an email with our next steps.">
+            <span class="chip-icon">⚡</span>
+            <span class="chip-text">Compound 2-step task</span>
+          </button>
+          <button class="prompt-chip" data-prompt="Set a reminder for the board meeting review tomorrow at 9:00 AM">
+            <span class="chip-icon">⏰</span>
+            <span class="chip-text">Set reminder</span>
+          </button>
+          <button class="prompt-chip" data-prompt="Prioritize tasks: Fix critical auth vulnerability, redesign marketing landing page, update API docs, write end-to-end tests">
+            <span class="chip-icon">📊</span>
+            <span class="chip-text">Prioritize tasks</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-section chat-history-section">
+        <div class="section-label">Session Queries</div>
+        <div class="history-list" id="history-list">
+          <div class="history-empty">No queries in this session yet</div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="backend-status-card" id="status-card">
+          <div class="status-indicator">
+            <span class="pulse-dot" id="api-status-dot"></span>
+            <span class="status-text" id="api-status-text">Backend: Checking</span>
+          </div>
+          <button class="config-link-btn" id="open-config-btn" title="Configure Backend URL">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Container -->
+    <main class="main-content">
+      <!-- Top Navbar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn mobile-menu-btn" id="mobile-toggle-btn" aria-label="Open menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="topbar-title-group">
+            <h1>AI Executive Assistant</h1>
+            <span class="version-tag">Agentic Core v1.0</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="topbar-action-btn" id="stats-modal-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Live Metrics</span>
+          </button>
+          <button class="topbar-action-btn config-btn" id="top-config-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <span id="backend-label-btn">Backend: Render</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Chat Canvas -->
+      <div class="chat-viewport" id="chat-viewport">
+        <!-- Hero / Empty State -->
+        <div class="welcome-hero" id="welcome-hero">
+          <div class="hero-glow"></div>
+          <div class="hero-badge">Autonomous Executive Agent</div>
+          <h2 class="hero-title">How can I assist your workflow today?</h2>
+          <p class="hero-description">
+            Equipped with multi-intent classification, compound task chaining, document intelligence, email formulation, and automated prioritization.
+          </p>
+
+          <div class="capabilities-grid">
+            <div class="capability-card" data-prompt="Draft a polite email to John declining the sponsor request due to budget limits.">
+              <div class="card-icon">📨</div>
+              <div class="card-title">Email Drafting</div>
+              <div class="card-desc">Context-aware professional email generation with tone control.</div>
+            </div>
+            <div class="capability-card" data-prompt="Summarize the core takeaways from the weekly executive leadership sync.">
+              <div class="card-icon">📑</div>
+              <div class="card-title">Smart Summarizer</div>
+              <div class="card-desc">Extract vital action items and core insights from long documents.</div>
+            </div>
+            <div class="capability-card" data-prompt="Summarize our engineering incident report and draft an apology email to customers.">
+              <div class="card-icon">⚡</div>
+              <div class="card-title">Compound Chaining</div>
+              <div class="card-desc">Execute multi-step workflows passing data seamlessly between tools.</div>
+            </div>
+            <div class="capability-card" data-prompt="Prioritize: 1. Server downtime in US-East, 2. Typo in blog post, 3. Quarterly sales deck preparation.">
+              <div class="card-icon">🎯</div>
+              <div class="card-title">Task Prioritization</div>
+              <div class="card-desc">Score and rank operational tasks by impact, urgency, and effort.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Message Stream -->
+        <div class="messages-container" id="messages-container"></div>
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="chat-input-wrapper">
+        <div class="input-container">
+          <div class="input-glow-border"></div>
+          <textarea
+            id="chat-input"
+            rows="1"
+            placeholder="Ask anything or chain tasks (e.g., 'Summarize the document and draft an update email')..."
+            aria-label="Ask Executive Assistant"
+          ></textarea>
+          <div class="input-actions">
+            <button class="send-btn" id="send-btn" aria-label="Send message">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="input-footer">
+          <span class="footer-tip">Press <kbd>Enter</kbd> to submit · <kbd>Shift + Enter</kbd> for newline</span>
+          <span class="backend-ping" id="backend-ping-text">Render API Connected</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Config Backend Modal -->
+  <div class="modal-backdrop" id="config-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon">⚙️</div>
+          <h3>Backend API Configuration</h3>
+        </div>
+        <button class="icon-btn modal-close" id="config-modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          Connect this Vercel frontend to your FastAPI backend deployed on <strong>Render</strong> or running locally.
+        </p>
+
+        <label class="form-label" for="backend-url-input">Backend URL</label>
+        <div class="input-with-button">
+          <input
+            type="url"
+            id="backend-url-input"
+            class="text-input"
+            placeholder="https://ai-executive-assistant-api.onrender.com"
+            value="http://localhost:8000"
+          >
+          <button class="primary-btn" id="test-connection-btn">Test</button>
+        </div>
+
+        <div class="connection-status-box" id="connection-status-box">
+          <span class="status-msg">Click "Test" to check backend reachability</span>
+        </div>
+
+        <div class="preset-links">
+          <span class="preset-label">Quick Presets:</span>
+          <button class="preset-btn" data-url="http://localhost:8000">Local (http://localhost:8000)</button>
+          <button class="preset-btn" id="render-preset-btn" data-url="https://ai-executive-assistant-api.onrender.com">Default Render URL</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-btn" id="cancel-config-btn">Cancel</button>
+        <button class="primary-btn" id="save-config-btn">Save & Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Stats Modal -->
+  <div class="modal-backdrop" id="stats-modal">
+    <div class="modal-card wide">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon">📊</div>
+          <h3>System Telemetry & Monitoring</h3>
+        </div>
+        <button class="icon-btn modal-close" id="stats-modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number" id="stat-total-reqs">0</span>
+            <span class="stat-label">Total API Calls</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="stat-avg-latency">0 ms</span>
+            <span class="stat-label">Avg Latency</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="stat-error-rate">0%</span>
+            <span class="stat-label">Error Rate</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="stat-total-tasks">0</span>
+            <span class="stat-label">Tasks Executed</span>
+          </div>
+        </div>
+
+        <div class="chart-section">
+          <h4>Intent Distribution</h4>
+          <div class="distribution-bars" id="distribution-bars">
+            <div class="empty-stats">No task telemetry logged yet. Ask queries to populate.</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-btn" id="refresh-stats-btn">🔄 Refresh Data</button>
+        <button class="primary-btn" id="close-stats-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

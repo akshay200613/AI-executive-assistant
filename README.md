@@ -54,15 +54,21 @@ docker-compose up --build
 | `/history/{session_id}` | GET | Session's conversation history |
 | `/health` | GET | Liveness check |
 
-## Deployment (free tier)
+## Deployment Guide (Render + Vercel)
 
-Any of these work with the Dockerfile as-is:
-- **Render** — connect the repo, it auto-detects the Dockerfile
-- **Railway** — `railway up` from the project root
-- **Hugging Face Spaces** (Docker SDK) — push the repo, set the Space to Docker mode
+### 1. Deploy Backend to Render (Free Tier)
+1. Go to [Render Dashboard](https://dashboard.render.com/) and click **New + > Web Service**.
+2. Connect your GitHub repository (`akshay200613/AI-executive-assistant`).
+3. Select **Docker** environment (or Render will automatically detect `render.yaml` and `Dockerfile`).
+4. Set the **Region** and click **Create Web Service**.
+5. Once deployed, copy your Render service URL (e.g. `https://ai-executive-assistant-api.onrender.com`).
 
-After deploying, update `API_URL` in the Streamlit service's environment to the
-API's public URL.
+### 2. Deploy Frontend to Vercel (Free Tier)
+1. Go to [Vercel Dashboard](https://vercel.com/) and click **Add New > Project**.
+2. Import your GitHub repository (`akshay200613/AI-executive-assistant`).
+3. Vercel automatically detects the static site configuration via `vercel.json` (or set Root Directory to `frontend`).
+4. Click **Deploy**.
+5. Once your Vercel URL is live (e.g. `https://ai-executive-assistant.vercel.app`), open it and click the **API Config** (⚙️) button to enter your Render backend URL.
 
 ## Known limitations (by design, given the 3-day scope)
 
